@@ -10,7 +10,7 @@
             :key="task.index">
             <input type="checkbox" 
             v-on:click="removeTask(index)">
-            {{ task.toUpperCase() }}
+            {{ task.toLowerCase() }}
             </li>
           </ul>
       </div>
@@ -39,7 +39,6 @@ export default {
     addTask(task){
       if(task){
         this.tasks.push(task);
-        this.task.toUpperCase();
         this.task = '';
         this.tasks.sort();
       }
