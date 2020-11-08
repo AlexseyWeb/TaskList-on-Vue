@@ -7,10 +7,10 @@
           <ul>
             <li 
             v-for="(task, index) in tasks" 
-            :key="task">
+            :key="task.index">
             <input type="checkbox" 
             v-on:click="removeTask(index)">
-            {{task}}
+            {{ task.toUpperCase() }}
             </li>
           </ul>
       </div>
@@ -31,7 +31,7 @@ export default {
     return {
       task: '',
       header: 'Список дел',
-      tasks: ['Бросить пить энергетики', 'бросить курить', 'занятся спортом']
+      tasks: ['Бросить пить энергетики', 'бросить курить', 'занятся спортом', ]
     }
   },
 
@@ -39,16 +39,16 @@ export default {
     addTask(task){
       if(task){
         this.tasks.push(task);
+        this.task.toUpperCase();
         this.task = '';
+        this.tasks.sort();
       }
-      
-      
-      
     },
     removeTask(index){
       this.tasks.splice(index, 1);
     }
-  }
+  },
+  
 }
 </script>
 
@@ -58,7 +58,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #033022be;
   margin-top: 60px;
 }
 
@@ -80,14 +80,24 @@ h1{
 .item-task > ul {
   list-style-type: none;
 }
+
+.item-task > ul > li {
+  padding-top: 20px;
+}
+
 .item-task > ul > li:hover{
   text-decoration: line-through;
-  color: red;
+  text-decoration-color: rgba(17, 153, 142, 0.986);
 }
 input[type="text"]{
   width: 400px;
   height: 50px;
   font-size: 22px;
+  border-radius: 20px;
+  margin: 0 auto;
+  box-shadow: darkred 1px 1px 1px ;
+  outline:none;
+  text-align: center;
 }
 input[type="text"]:focus{
   border:darkcyan;
@@ -101,6 +111,12 @@ button{
   color: white;
   border: none;
   outline: none;
+  border-radius: 20px;
+  box-shadow: darkred 1px 1px 1px ;
+}
+button:hover {
+  background:rgba(5, 38, 82, 0.493);
+  transition: background, 1s ease-in-out;
 }
 
 </style>
