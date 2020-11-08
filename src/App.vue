@@ -37,8 +37,11 @@ export default {
 
   methods: {
     addTask(task){
-      this.tasks.push(task);
-      this.task = '';
+      if(task){
+        this.tasks.push(task);
+        this.task = '';
+      }
+      
       
       
     },
