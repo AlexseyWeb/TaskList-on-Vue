@@ -1,13 +1,14 @@
 <template>
    <div>
      <h1>{{header}}:</h1>
-      <input  type="text" class="task-input" v-model="task" v-on:keyup.enter="addTask(task)">
-      <button class="add-task" v-on:click="addTask(task)">Добавить</button>
+      <input  type="text" class="task-input" v-model="task" v-on:keyup.enter="addTask(task)" title="пиши сюда">
+      <button class="add-task" v-on:click="addTask(task)" title="Добавить цель">Добавить</button>
+      <h2>Чтобы добавить цель напишите в поле и нажмите Enter или кнопку добавить</h2>
       <div class="item-task">
           <ul>
             <li 
-            v-for="(task, index) in tasks" 
-            :key="task.index">
+            v-for="(task, index) in tasks.sort()" 
+            :key="task">
             <input type="checkbox" 
             v-on:click="removeTask(index)">
             {{ task.toLowerCase() }}
@@ -31,7 +32,7 @@ export default {
     return {
       task: '',
       header: 'Список дел',
-      tasks: ['Бросить пить энергетики', 'бросить курить', 'занятся спортом', ]
+      tasks: [ 'бросить курить', 'занятся спортом', ]
     }
   },
 
@@ -40,7 +41,7 @@ export default {
       if(task){
         this.tasks.push(task);
         this.task = '';
-        this.tasks.sort();
+        
       }
     },
     removeTask(index){
@@ -63,8 +64,8 @@ export default {
 
 h1{
   padding-bottom: 30px;
-  color: white;
   text-align: center;
+  font-family: 'ROBOTO', sans-serif, ;
 }
 
 .item-task {
@@ -105,6 +106,7 @@ input[type="text"]:focus{
 button{
   width: 200px;
   height: 50px;
+  margin: 30px;
   font-size: 22px;
   background: rgba(0, 0, 0, 0.5);
   color: white;
