@@ -1,2 +1,2 @@
-# todo-list
-live demo on https://todo-alongenet.firebaseapp.com
+# todo-list on Vue 
+[live demo] (https://todo-alongenet.firebaseapp.com)
